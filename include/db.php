@@ -9,5 +9,9 @@ foreach ($db as $key => $value){
 
 }
 $connect = mysqli_connect(DB_HOST , DB_USER, PASS,DATABASE);
+if($connect)
+{
+    echo "connect";
+}
 ?>
 
