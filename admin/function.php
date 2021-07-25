@@ -41,6 +41,22 @@
         }
     }
 
+    function chcek_result($result)
+    {
+        global $connect;
+        if(!$result)
+        {
+            die("QUERY FAILD." .mysqli_error($connect));
+        }
+        else
+        {
+            echo "<script>alert('New Post Add')</script>";
+        }
+
+    }
+
+
+
 
 ?>
 
