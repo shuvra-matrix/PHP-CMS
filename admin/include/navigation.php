@@ -36,8 +36,8 @@
 
 
 
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-        <ul class="nav navbar-nav side-nav">
+    <div class="collapse navbar-collapse navbar-ex1-collapse" >
+        <ul class="nav navbar-nav side-nav" style="height: 150%">
             <li>
                 <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
             </li>
@@ -48,7 +48,7 @@
                         <a href="posts.php">View All Post</a>
                     </li>
                     <li>
-                        <a href="#">Add Post</a>
+                        <a href="posts.php?source=add_post">Add Post</a>
                     </li>
                 </ul>
             </li>

@@ -5,7 +5,8 @@
         $post_title = $_POST['title'];
         $post_category = $_POST['post_category'];
         $post_author = $_POST['author'];
-        $post_content = $_POST['content'];
+        $post_content =$_POST['content'];
+        $post_content = mysqli_real_escape_string($connect,$post_content);
         $post_status = $_POST['post_status'];
         $post_tag = $_POST['post_tag'];
         $post_image = $_FILES['image']['name'];
@@ -21,11 +22,6 @@
 
 ?>
 
-
-
-
-
-
 <form action="" method="POST" enctype="multipart/form-data">
 
     <div class="form-group">
@@ -33,8 +29,20 @@
         <input id="title" type="text" class="form-control" name="title">
     </div>
     <div class="form-group">
-        <label for="post_category">Category Id</label>
-        <input id="post_category" type="text" class="form-control" name="post_category">
+        <label for="category">Category</label>
+        <select name="post_category" id="category" >
+            <?php
+            $querys = "SELECT * FROM categories";
+            $result = mysqli_query($connect,$querys);
+            while ($rows=mysqli_fetch_assoc($result)){
+                $title = $rows['cat_title'];?>
+
+                <option value="<?php echo $rows['cat_id']?>"><?php echo $title; ?></option>
+            <?php }
+
+            ?>
+
+        </select>
     </div>
     <div class="form-group">
         <label for="post_author">Author</label>

@@ -40,7 +40,9 @@ delete_cat();
                             include("./include/add_post.php");
                             break;
 
-                        case "45":
+                        case "edit_post":
+                            include ("./include/edit_post.php");
+                            break;
 
 
                         default:
