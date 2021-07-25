@@ -11,7 +11,7 @@ foreach ($db as $key => $value){
 $connect = mysqli_connect(DB_HOST , DB_USER, PASS,DATABASE);
 if($connect)
 {
-    echo "connect";
+    echo "<h1 style='color: #ad0505'>connect</h1>";
 }
 ?>
 

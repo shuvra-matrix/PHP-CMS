@@ -1,3 +1,6 @@
+<?php ob_start(); ?>
+<?php  include "../include/db.php"; ?>
+<?php include "function.php"?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,4 +33,5 @@
 </head>
 
 <body>
+
 
