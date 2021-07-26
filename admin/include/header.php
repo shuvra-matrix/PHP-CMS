@@ -32,6 +32,6 @@
 
 </head>
 
-<body style="overflow: scroll">
+<body>
 
 

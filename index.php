@@ -1,8 +1,7 @@
-<?php  include "include/db.php"; ?>
 <?php
 include "include/header.php";
 ?>
-<body>
+
 
     <?php include 'include/navigation.php' ?>
 
@@ -22,7 +21,7 @@ include "include/header.php";
                 $post_catagory_id = $row['post_category_id'];
                 $post_author = $row['post_author'];
                 $post_comment_counts = $row['post_comment_counts'];
-                $post_content = $row['post_content'];
+                $post_content = substr($row['post_content'],0,250);
                 $post_image = $row['post_image'];
                 $post_status = $row['post_status'];
                 $post_tag = $row['post_tags'];
@@ -38,7 +37,7 @@ include "include/header.php";
 
                     <!-- First Blog Post -->
                     <h2>
-                        <a href="#"><?php echo $post_title?></a>
+                        <a href="post.php?post_id=<?php echo $post_id ?>"><?php echo $post_title?></a>
                     </h2>
                     <p class="lead">
                         by <a href="index.php"><?php echo $post_author?></a>
@@ -48,7 +47,7 @@ include "include/header.php";
                     <img class="img-responsive" src="images/<?php echo $post_image ?>" alt="">
                     <hr>
                     <p><?php echo $post_content?></p>
-                    <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+                    <a class="btn btn-primary" href="post.php?post_id=<?php echo $post_id ?>">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
                     <hr>
 

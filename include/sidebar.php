@@ -27,10 +27,11 @@
     while ($row = mysqli_fetch_assoc($select_all_catagory))
     {
         $cat_title = $row['cat_title'];
+        $cat_id = $row['cat_id'];
         ?>
     <!-- Blog Categories Well -->
                 <ul class="list-unstyled">
-                    <li><a href="#"><?php echo $cat_title?></a>
+                    <li><a href="category.php?cat_id=<?php echo $cat_id ?>"><?php echo $cat_title?></a>
                     </li>
                 </ul>
 

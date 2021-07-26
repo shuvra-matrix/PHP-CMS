@@ -1,5 +1,5 @@
 
-<div class="container" style="overflow: scroll;width:100% " >
+<div class="container" style="overflow: auto;width:100% " >
 <table class="table table-bordered table-hover table-responsive" >
     <thead class="">
     <tr>
