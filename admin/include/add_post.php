@@ -12,10 +12,9 @@
         $post_image = $_FILES['image']['name'];
         $post_image_temp = $_FILES['image']['tmp_name'];
         $post_date = date('d-m-y');
-        $post_comment = 4;
         move_uploaded_file($post_image_temp,"../images/$post_image");
 
-        $query = "INSERT INTO posts(post_category_id,post_author,post_comment_counts,post_content,post_image,post_status,post_tags,post_title,post_date) VALUE ('$post_category','$post_author','$post_comment','$post_content','$post_image','$post_status','$post_tag','$post_title',now())";
+        $query = "INSERT INTO posts(post_category_id,post_author,post_content,post_image,post_status,post_tags,post_title,post_date) VALUE ('$post_category','$post_author','$post_comment','$post_content','$post_image','$post_status','$post_tag','$post_title',now())";
         $result = mysqli_query($connect,$query);
         chcek_result($result);
     }
