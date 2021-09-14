@@ -64,9 +64,6 @@ if(isset($_GET['change_to_sub']))
     $id = $_GET['change_to_sub'];
     $query = "UPDATE users SET user_role = 'Subscriber' WHERE user_id = '$id'";
     $result = mysqli_query($connect,$query);
-    header('Location: users.php ');
+    header('Location: users.php ');    
 }
-
-
-
 ?>

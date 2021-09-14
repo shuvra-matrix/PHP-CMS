@@ -5,7 +5,7 @@
     <!-- Blog Search Well -->
     <div class="well">
         <h4>Blog Search</h4>
-        <form method="POST" action="http://localhost:63342/PHP%20CMS/search.php">
+        <form method="POST" action="./search.php">
         <div class="input-group">
                 <input name="search" type="text" class="form-control">
             <span class="input-group-btn">
@@ -17,6 +17,25 @@
         <!-- /.input-group -->
         </form>
     </div>
+
+     <!--Login-->
+     <div class="well">
+        <h4>Log In</h4>
+        <form method="POST" action="./include/login.php">
+        <div class="form-group">
+                <input name="user_name" type="text" class="form-control" placeholder="User Name">
+        </div>
+        <div class="input-group">
+                <input name="password" type="password" class="form-control" placeholder="Password">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-primary" name="login" >Log In</button>
+                </span>
+        </div>
+        <!-- /.input-group -->
+        </form>
+    </div>
+
+
     <div class="well">
         <h4>Blog Categories</h4>
         <div class="row">

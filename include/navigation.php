@@ -9,7 +9,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.php">Mon Blog</a>
+            <a class="navbar-brand" href="./index.php">Mon Blog</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -28,7 +28,7 @@
                 ?>
 
                 <li>
-                    <a href="http://localhost:63342/PHP%20CMS/admin/index.php?_ijt=gb12v9u8f8as3fjfev6rskajvv">Admin</a>
+                    <a href="./admin/index.php">Admin</a>
                 </li>
                 <li>
                     <a href="#">Services</a>

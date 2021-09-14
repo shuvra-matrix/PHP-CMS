@@ -1,5 +1,6 @@
 <?php
-if (isset($_GET['source'])) {
+if (isset($_GET['source'])) 
+{
     if (isset($_GET['user_id'])) 
     {
         $id = $_GET['user_id'];
