@@ -37,7 +37,7 @@ if (isset($_POST['add_user'])) {
     </div>
     <div class="form-group">
         <label for="post_content">Email</label>
-        <textarea id="post_content" class="form-control" name="email"></textarea>
+        <input type="email" id="post_content" class="form-control" name="email">
     </div>
     <div class="form-group">
         <label for="post_image">Password</label>

@@ -7,8 +7,9 @@
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Email</th>
-                <th>User Image</th>
+                <!-- <th>User Image</th> -->
                 <th>User Role</th>
+                <th></th>
                 <th></th>
                 <th></th>
                 <td></td>
@@ -24,7 +25,7 @@
                 $user_firstname = $row['user_firstname'];
                 $user_lastname = $row['user_lastname'];
                 $user_email = $row['user_email'];
-                $user_image = $row['user_image'];
+                // $user_image = $row['user_image'];
                 $user_role = $row['user_role'];
             ?>
                 <tr>
@@ -33,10 +34,11 @@
                     <td><?php echo $user_firstname ?></td>
                     <td><?php echo $user_lastname ?></td>
                     <td><?php echo $user_email ?></td>
-                    <td><img style="width:100px" src="../images/<?php echo $user_image ?>" </td>
+                    <!-- <td><img style="width:100px" src="../images/<?php echo $user_image ?>" </td> -->
                     <td><?php echo $user_role ?></td>
-                    <td><a href='comment.php?approved=<?php echo $comment_id ?>'>Approve</a></td>
-                    <td><a href='comment.php?unapproved=<?php echo $comment_id ?>'>Unapproved</a></td>
+                    <td><a href='users.php?change_to_admin=<?php echo $user_id ?>'>Approve</a></td>
+                    <td><a href='users.php?change_to_sub=<?php echo $user_id ?>'>Unapproved</a></td>
+                    <td><a href='users.php?source=edit_user&user_id=<?php echo $user_id ?>'>Edit</a></td>
                     <td><a href='users.php?delete=<?php echo $user_id ?>'>Delete</a></td>
                 </tr>
             <?php } ?>
@@ -49,4 +51,22 @@ if (isset($_GET['delete'])) {
     $query = "DELETE FROM users WHERE user_id = '$id'";
     $result = mysqli_query($connect, $query);
     header('Location: users.php ');
-} ?>
+}
+if(isset($_GET['change_to_admin']))
+{
+    $id = $_GET['change_to_admin'];
+    $query = "UPDATE users SET user_role = 'Admin' WHERE user_id = '$id'";
+    $result = mysqli_query($connect,$query);
+    header('Location: users.php ');
+}
+if(isset($_GET['change_to_sub']))
+{
+    $id = $_GET['change_to_sub'];
+    $query = "UPDATE users SET user_role = 'Subscriber' WHERE user_id = '$id'";
+    $result = mysqli_query($connect,$query);
+    header('Location: users.php ');
+}
+
+
+
+?>
