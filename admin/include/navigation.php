@@ -15,10 +15,10 @@
           <a href="../index.php" >Blog Site</a>
         </li>
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_SESSION['firstname'].' '.$_SESSION['lastname'];      ?> <b class="caret"></b></a>
             <ul class="dropdown-menu">
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                    <a href="./profile.php"><i class="fa fa-fw fa-user"></i> Profile</a>
                 </li>
                 <li class="divider"></li>
                 <li>
@@ -71,7 +71,7 @@
                 <a href="comment.php"><i class="fa fa-fw fa-file"></i> Comments</a>
             </li>
             <li>
-                <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> Profile</a>
+                <a href="./profile.php"><i class="fa fa-fw fa-dashboard"></i> Profile</a>
             </li>
         </ul>
     </div>
