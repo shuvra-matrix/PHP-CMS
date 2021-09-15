@@ -92,12 +92,16 @@
         <img width="100" src="../images/<?php echo $post_image ?>">
     </div>
     <div class="form-group">
-        <label for="post_status">Status</label>
-        <input id="post_status" type="text" class="form-control" name="post_status" value="<?php echo $post_status ?>">
-    </div>
-    <div class="form-group">
         <label for="post_status">Tag</label>
         <input id="post_status" type="text" class="form-control" name="post_tag" value="<?php echo $post_tag ?>">
+    </div>
+    <div class="form-group">
+        <label for="post_status">Status</label>
+        <select name="post_status" id="category" >
+            <option value="<?php echo $post_status ?>"><?php echo $post_status ?></option>
+            <option value="Draft">Draft</option>
+            <option value="Publish">Publish</option>
+        </select>
     </div>
     <div class="form-group">
         <input  type="submit" class="btn btn-primary" name="update_post" value="Submit">

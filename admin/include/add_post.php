@@ -55,13 +55,18 @@
         <label for="post_image">Image</label>
         <input id="post_image"  type="file"  name="image">
     </div>
-    <div class="form-group">
-        <label for="post_status">Status</label>
-        <input id="post_status" type="text" class="form-control" name="post_status">
-    </div>
+    
     <div class="form-group">
         <label for="post_status">Tag</label>
         <input id="post_status" type="text" class="form-control" name="post_tag">
+    </div>
+    <div class="form-group">
+        <label for="post_status">Status</label>
+        <select name="post_status" id="category" >
+            <option value="">Select Post Status</option>
+            <option value="Draft">Draft</option>
+            <option value="Publish">Publish</option>
+        </select>
     </div>
     <div class="form-group">
         <input  type="submit" class="btn btn-primary" name="adds_post" value="Submit">
