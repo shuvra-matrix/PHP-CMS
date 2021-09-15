@@ -62,12 +62,19 @@ include "include/header.php";
                                 $name = $_POST['name'];
                                 $email = $_POST['email'];
                                 $comment = $_POST['content'];
-                                $comment = mysqli_real_escape_string($connect,$comment);
-                                $query = "INSERT INTO comments (comment_post_id,comment_author,comment_email,comment_content,comment_date) ";
-                                $query .= "VALUES ('$post_id','$name','$email','$comment',now()) ";
-                                $result = mysqli_query($connect,$query);
-                                $query = "UPDATE posts SET post_comment_counts = post_comment_counts + 1 WHERE post_id = $post_id";
-                                $result = mysqli_query($connect,$query);
+                                if(!empty($name) && !empty($email) && !empty($comment))
+                                {
+                                    $comment = mysqli_real_escape_string($connect,$comment);
+                                    $query = "INSERT INTO comments (comment_post_id,comment_author,comment_email,comment_content,comment_date) ";
+                                    $query .= "VALUES ('$post_id','$name','$email','$comment',now()) ";
+                                    $result = mysqli_query($connect,$query);
+                                    $query = "UPDATE posts SET post_comment_counts = post_comment_counts + 1 WHERE post_id = $post_id";
+                                    $result = mysqli_query($connect,$query);
+                                }
+                                else
+                                {
+                                    echo "<script> alert('Comment field can not be empty '); </script>";
+                                }
                         }
 
                     ?>
@@ -142,14 +149,6 @@ include "include/header.php";
                 </div>
 
             </div>
-
-
-
-
-
-
-
-
 
             <!-- Blog Sidebar Widgets Column -->
        <?php include "include/sidebar.php" ?>
