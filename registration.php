@@ -14,6 +14,8 @@
      {
         $query="SELECT randSalt FROM users";
         $result = mysqli_query($connect,$query);
+
+        
      }
      else
      {
