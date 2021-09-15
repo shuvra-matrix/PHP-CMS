@@ -82,7 +82,7 @@
     </div>
     <div class="form-group">
         <label for="post_content">Content</label>
-        <textarea id="post_content"  class="form-control" name="content"><?php echo $post_content ?></textarea>
+        <textarea id="editor_post"  class="form-control" name="content"><?php echo $post_content ?></textarea>
     </div>
     <div class="form-group">
         <label for="post_image">Image</label>
