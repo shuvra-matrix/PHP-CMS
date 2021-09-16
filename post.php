@@ -6,11 +6,16 @@ include "include/header.php";
 <?php
  if(isset($_GET['post_id']))
  {
-     $post_id = $_GET['post_id'];
-     $post_id = mysqli_real_escape_string($connect,$post_id);
-     $query = "SELECT * FROM posts WHERE post_id ='$post_id'";
-     $result = mysqli_query($connect,$query);
-     $row = mysqli_fetch_assoc($result);
+    $post_id = $_GET['post_id'];
+    $updates = "UPDATE posts SET post_views = post_views+1 WHERE post_id = '$post_id'";
+    $querys = mysqli_query($connect,$updates);
+    $post_id = mysqli_real_escape_string($connect,$post_id);
+    $query = "SELECT * FROM posts WHERE post_id ='$post_id'";
+    $result = mysqli_query($connect,$query);
+    $row = mysqli_fetch_assoc($result);
+    
+
+
  }
  else
  {

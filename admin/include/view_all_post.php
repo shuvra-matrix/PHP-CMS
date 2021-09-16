@@ -13,6 +13,7 @@
         <th>Tags</th>
         <th>Date</th>
         <th>Comments</th>
+        <th>Post Views</th>
         <th></th>
         <th></th>
     </tr>
@@ -32,23 +33,25 @@
         $post_tag = $row['post_tags'];
         $post_title = $row['post_title'];
         $post_date = $row['post_date'];
+        $post_views = $row['post_views'];
         $next_query = "SELECT * from categories WHERE cat_id = '$post_catagory_id'";
         $result = mysqli_query($connect,$next_query);
         $rows = mysqli_fetch_assoc($result);
        ?>
         <tr>
-            <td><?php echo $post_id?></td>
-            <td><?php echo $rows['cat_title'] ?></td>
-            <td><?php echo $post_author?></td>
-            <td><?php echo $post_title?></td>
-            <td><?php echo $post_content?></td>
-            <td><img style="width:100px" src="../images/<?php echo $post_image?>"</td>
-            <td><?php echo $post_status?></td>
-            <td><?php echo $post_tag?></td>
-            <td><?php echo $post_date?></td>
-            <td><?php echo $post_comment_counts?></td>
-            <td><a href='posts.php?source=edit_post&post_id=<?php echo $post_id ?>'>Update</a></td>
-            <td><a href='posts.php?delete=<?php echo $post_id ?>'>Delete</a></td>
+            <td><?php echo $post_id ;?></td>
+            <td><?php echo $rows['cat_title'] ;?></td>
+            <td><?php echo $post_author;?></td>
+            <td><?php echo $post_title;?></td>
+            <td><?php echo $post_content;?></td>
+            <td><img style="width:100px" src="../images/<?php echo $post_image;?>"</td>
+            <td><?php echo $post_status;?></td>
+            <td><?php echo $post_tag;?></td>
+            <td><?php echo $post_date;?></td>
+            <td><?php echo $post_comment_counts;?></td>
+            <td><?php echo $post_views ; ?></td>
+            <td><a href='posts.php?source=edit_post&post_id=<?php echo $post_id ;?>'>Update</a></td>
+            <td><a href='posts.php?delete=<?php echo $post_id ;?>'>Delete</a></td>
         </tr>
     <?php } ?>
     </tbody>
