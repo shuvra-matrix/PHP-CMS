@@ -2,25 +2,44 @@
  
  if(isset($_POST['submit']))
  {
-     $user_name = $_POST['username'];
-     $user_name = mysqli_real_escape_string($connect,$user_name);
-     $email = $_POST['email'];
-     $email = mysqli_real_escape_string($connect,$email);
-     $password = $_POST['password'];
-     $password = mysqli_real_escape_string($connect,$password);
-     $confirm_password = $_POST['confirm_password'];
-     $confirm_password = mysqli_real_escape_string($connect,$confirm_password);
-     if($password === $confirm_password)
-     {
-        $query="SELECT randSalt FROM users";
-        $result = mysqli_query($connect,$query);
-
+    $user_name = $_POST['username'];
+    $user_name = mysqli_real_escape_string($connect,$user_name);
+    $email = $_POST['email'];
+    $email = mysqli_real_escape_string($connect,$email);
+    $password = $_POST['password'];
+    $password = mysqli_real_escape_string($connect,$password);
+    $confirm_password = $_POST['confirm_password'];
+    $confirm_password = mysqli_real_escape_string($connect,$confirm_password);
+    if(!empty($user_name) && !empty($email) && !empty($password) && !empty($confirm_password))
+    {
+        if($password === $confirm_password)
+        {   
+            $salt = "$2y$10$2usesomecrazystrings22";
+            $password = crypt($password,$salt);
+            
+            $query="INSERT INTO users(user_name,user_email,user_password,user_role) VALUES ('$user_name','$email','$password','Subscriber')";
+            $result = mysqli_query($connect,$query);
+            if($result)
+            {
+                echo "<script> alert('User Register Successfully');
+                window.location.href='./index.php';</script>";
+            }
+            else
+            {   
+                $mes="Something Went Wrong";
+                die($mes);
+            }
         
-     }
-     else
-     {
-         echo "<script> alert('Password does not match'); </script>";
-     }
+        }
+        else
+        {
+            echo "<script> alert('Password does not match'); </script>";
+        }
+    }
+    else
+    {
+        echo "<script> alert('Filds can not be empty'); </script>";
+    }
  }
  
  

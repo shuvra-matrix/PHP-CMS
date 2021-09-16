@@ -23,6 +23,7 @@ if(isset($_POST['login']))
             $db_fname = $row['user_firstname'];
             $db_lastname = $row['user_lastname'];
             $db_role = $row['user_role'];
+            $password = crypt($password,$db_password);
         }
             if($user_name === $db_username && $password === $db_password )
             {

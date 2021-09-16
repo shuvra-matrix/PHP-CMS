@@ -22,10 +22,12 @@ if (isset($_POST['update_user'])) {
     $lastname = $_POST["last_name"];
     $username = $_POST["username"];
     $password = $_POST["password"];
+    $salt = "$2y$10$2usesomecrazystrings22";
+    $password = crypt($password,$salt);
     $email = $_POST['email'];
     $user_id = $_POST['user_id'];
 
-    $query = "UPDATE users SET user_name = '$username', user_password = '$password', user_firstname = '$firstname',user_lastname='$lastname',user_email='$email',user_role = '$role' WHERE user_id = '$user_id' ";
+    $query = "UPDATE users SET user_name = '$username', user_password = '$password', user_firstname = '$firstname',user_lastname='$lastname',user_email='$email' WHERE user_id = '$user_id' ";
     $result = mysqli_query($connect, $query);
     if(!$result)
     {   
