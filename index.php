@@ -16,7 +16,8 @@ include "include/header.php";
             <!-- Blog Entries Column -->
             <div class="col-md-8">
                 <?php
-                $lower = 0 ; 
+                $lower = 0 ;
+                 $page_no = ""; 
                 $post_query = 'SELECT * FROM posts WHERE post_status="Publish"';
                 $result = mysqli_query($connect, $post_query);
                 $post_count = mysqli_num_rows($result);
@@ -88,9 +89,18 @@ include "include/header.php";
         <hr>
 
                     <ul class="pager">
-                        <?php  for($i=1;$i<=$post_count;$i++ ){    ?>
+                        <?php  for($i=1;$i<=$post_count;$i++ ){
+                            
+                            if($i == $page_no )
+                            { ?>
+
+
+                                <li><a class="active_link" href="./index.php?page=<?php  echo $i; ?>"><?php  echo $i ;?> </a></li>
+                                
+                            <?php }
+                            else{ ?>
                         <li><a href="./index.php?page=<?php  echo $i; ?>"><?php  echo $i ;?> </a></li>
-                        <?php } ?>
+                        <?php } }?>
                     </ul>
         <!-- Footer -->
-       <?php include "include/footer.php"?>
+       <?php include "include/footer.php" ; ?>
