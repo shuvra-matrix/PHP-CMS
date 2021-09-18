@@ -1,4 +1,7 @@
 <?php
+
+use function PHPSTORM_META\type;
+
 include "include/header.php";
 ?>
 
@@ -13,8 +16,19 @@ include "include/header.php";
             <!-- Blog Entries Column -->
             <div class="col-md-8">
                 <?php
-
-                $query = 'SELECT * FROM posts WHERE post_status="Publish"';
+                $lower = 0 ; 
+                $post_query = 'SELECT * FROM posts WHERE post_status="Publish"';
+                $result = mysqli_query($connect, $post_query);
+                $post_count = mysqli_num_rows($result);
+                $post_count = ceil($post_count / 5);
+                if (isset($_GET['page']))
+                {   
+                    $page_no = $_GET['page'];
+                    $page_no = mysqli_real_escape_string($connect,$page_no);
+                    $lower = ($page_no*5)-5;
+                
+                }
+                $query = "SELECT * FROM posts WHERE post_status='Publish' LIMIT $lower , 5";
                 $select_all_from_query = mysqli_query($connect,$query);
                 while ($row = mysqli_fetch_assoc($select_all_from_query)){
                 $post_id = $row['post_id'];
@@ -73,5 +87,10 @@ include "include/header.php";
 
         <hr>
 
+                    <ul class="pager">
+                        <?php  for($i=1;$i<=$post_count;$i++ ){    ?>
+                        <li><a href="./index.php?page=<?php  echo $i; ?>"><?php  echo $i ;?> </a></li>
+                        <?php } ?>
+                    </ul>
         <!-- Footer -->
        <?php include "include/footer.php"?>
