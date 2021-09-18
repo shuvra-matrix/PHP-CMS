@@ -1,4 +1,6 @@
-<?php include "include/header.php"; ?>
+<?php include "include/header.php";
+include "../include/session.php";
+include "../include/admin_session.php"; ?>
 
 
 <div id="wrapper">

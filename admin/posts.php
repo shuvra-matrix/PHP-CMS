@@ -1,4 +1,5 @@
-<?php include "include/header.php"; ?>
+<?php include "include/header.php";
+include "../include/session.php"; ?>
 
 
     <div id="wrapper">

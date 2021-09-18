@@ -1,4 +1,14 @@
-<?php include "include/header.php"; ?>
+<?php include "include/header.php";
+$id = $_SESSION['user_id'];
+$role = $_SESSION['user_role'];
+
+$user_query = "SELECT * FROM users WHERE user_id= '$id'";
+echo $user_query;
+$user_result = mysqli_query($connect,$user_query);
+$user_row = mysqli_fetch_assoc($user_result); 
+
+
+?>
 
 
     <div id="wrapper">
@@ -16,8 +26,8 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Welcome To Admin Page
-                            <small>Hi <?php echo $_SESSION['firstname'].' '.$_SESSION['lastname'];      ?></small>
+                            Welcome To <?php  echo $role;  ?> Page
+                            <small>Hi <?php echo $user_row['user_firstname'].' '.$user_row['user_lastname'];      ?></small>
                         </h1>
                         <ol class="breadcrumb">
                             <li>
@@ -41,7 +51,11 @@
                                     <div class="col-xs-9 text-right">
                                         <?php
 
-                                        $query = "SELECT * FROM posts";
+                                        if ($role == "Admin") {
+                                            $query = 'SELECT * FROM posts';
+                                        } else if ($role == "Bloger") {
+                                            $query = "SELECT * FROM posts WHERE post_author_id = '$id'";
+                                        }
                                         $result = mysqli_query($connect,$query);
                                         $posts = mysqli_num_rows($result);
 
@@ -60,6 +74,7 @@
                             </a>
                         </div>
                     </div>
+                    <?php if($user_role == "Bloger"){   ?>
                     <div class="col-lg-3 col-md-6">
                         <div class="panel panel-green">
                             <div class="panel-heading">
@@ -69,7 +84,7 @@
                                     </div>
                                     <?php
 
-                                        $query = "SELECT * FROM comments";
+                                        $query = "SELECT * FROM comments INNER JOIN posts ON comments.comment_post_id = posts.post_id WHERE posts.post_author_id = '$id'";
                                         $result = mysqli_query($connect,$query);
                                         $comment = mysqli_num_rows($result);
 
@@ -89,6 +104,7 @@
                             </a>
                         </div>
                     </div>
+                    <?php }else{ ?>
                     <div class="col-lg-3 col-md-6">
                         <div class="panel panel-yellow">
                             <div class="panel-heading">
@@ -149,6 +165,7 @@
                     </div>
                 </div>
             </div>
+            <?php } ?>
             <!-- /.container-fluid -->
 
         </div>

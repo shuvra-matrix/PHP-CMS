@@ -1,4 +1,13 @@
-<?php include "include/header.php"; ?>
+<?php include "include/header.php";
+include "../include/session.php";
+
+$role = $_SESSION['user_role'];
+if($role != "Bloger")
+{
+    header("Location:../index.php");
+}
+
+?>
 
 
     <div id="wrapper">

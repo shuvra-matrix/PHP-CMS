@@ -17,7 +17,8 @@ if(isset($_POST['login']))
     else
     {
         while($row = mysqli_fetch_assoc($result))
-        {
+        {   
+            $db_id = $row['user_id'];
             $db_username = $row['user_name'];
             $db_password = $row['user_password'];
             $db_fname = $row['user_firstname'];
@@ -27,8 +28,10 @@ if(isset($_POST['login']))
         }
             if($user_name === $db_username && $password === $db_password )
             {
+                
                 if($db_role == 'Admin')
                 {   
+                    $_SESSION['user_id'] = $db_id;
                     $_SESSION['user_name'] = $db_username;
                     $_SESSION['firstname'] = $db_fname;
                     $_SESSION['lastname'] = $db_lastname;
@@ -36,6 +39,19 @@ if(isset($_POST['login']))
                     echo "<script>alert('Hellow $db_username');
                     window.location.href='../admin/index.php'; </script>";
                 }
+
+                else if ($db_role == 'Bloger') {
+                $_SESSION['user_id'] = $db_id;
+                $_SESSION['user_name'] = $db_username;
+                $_SESSION['firstname'] = $db_fname;
+                $_SESSION['lastname'] = $db_lastname;
+                $_SESSION['user_role'] = $db_role;
+                echo "<script>alert('Hellow $db_username');
+                    window.location.href='../admin/index.php'; </script>";
+                }
+
+
+
                 else if($db_role == 'Subscriber')
                 {
                     echo "<script>alert('Hellow Subscriber $db_username');

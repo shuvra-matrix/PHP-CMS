@@ -19,7 +19,16 @@
     </thead>
     <tbody>
     <?php
-    $query = 'SELECT * FROM posts';
+    $id = $_SESSION['user_id'];
+    $role = $_SESSION['user_role'];
+    if($role == "Admin" )
+    {
+        $query = 'SELECT * FROM posts';
+    }
+    else if($role == "Bloger") 
+    {     
+        $query = "SELECT * FROM posts WHERE post_author_id = '$id'";
+    }
     $select_all_from_query = mysqli_query($connect,$query);
     while ($row = mysqli_fetch_assoc($select_all_from_query)){
         $post_id = $row['post_id'];
