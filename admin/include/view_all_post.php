@@ -25,7 +25,9 @@
         $post_id = $row['post_id'];
         $post_catagory_id = $row['post_category_id'];
         $post_author = $row['post_author'];
-        $post_comment_counts = $row['post_comment_counts'];
+        $comment_query = "SELECT * FROM comments WHERE comment_post_id = '$post_id'";
+        $results = mysqli_query($connect, $comment_query);
+        $post_comment_counts = mysqli_num_rows($results);
         $post_content = $row['post_content'];
         $post_image = $row['post_image'];
         $post_status = $row['post_status'];

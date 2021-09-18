@@ -4,8 +4,6 @@ use function PHPSTORM_META\type;
 
 include "include/header.php";
 ?>
-
-
     <?php include 'include/navigation.php' ?>
 
     <!-- Page Content -->
