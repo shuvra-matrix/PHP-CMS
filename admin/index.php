@@ -26,7 +26,6 @@ $user_row = mysqli_fetch_assoc($user_result);
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Welcome To <?php  echo $role;  ?> Page
                             <small>Hi <?php echo $user_row['user_firstname'].' '.$user_row['user_lastname'];      ?></small>
                         </h1>
                         <ol class="breadcrumb">

@@ -63,8 +63,7 @@ if (isset($_POST['update_user'])) {
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Welcome To Admin Page
-                        <small>Hi admin</small>
+                        <small>Profile</small>
                     </h1>
                     
                     <form action="" method="POST" enctype="multipart/form-data">
