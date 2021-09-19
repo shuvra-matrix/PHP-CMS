@@ -1,5 +1,6 @@
 <?php
 include "./include/header.php";
+include "../include/session.php";
 
     if (isset($_SESSION['user_name'])) 
     {
@@ -14,20 +15,18 @@ include "./include/header.php";
         $user_email = $row['user_email'];
      // $user_image = $row['user_image'];
         $user_role = $row['user_role'];
-        $user_password = $row['user_password'];
     }
 
 if (isset($_POST['update_user'])) {
     $firstname = $_POST["first_name"];
     $lastname = $_POST["last_name"];
     $username = $_POST["username"];
-    $password = $_POST["password"];
     $salt = "$2y$10$2usesomecrazystrings22";
     $password = crypt($password,$salt);
     $email = $_POST['email'];
     $user_id = $_POST['user_id'];
 
-    $query = "UPDATE users SET user_name = '$username', user_password = '$password', user_firstname = '$firstname',user_lastname='$lastname',user_email='$email' WHERE user_id = '$user_id' ";
+    $query = "UPDATE users SET user_name = '$username', user_firstname = '$firstname',user_lastname='$lastname',user_email='$email' WHERE user_id = '$user_id' ";
     $result = mysqli_query($connect, $query);
     if(!$result)
     {   
@@ -64,8 +63,7 @@ if (isset($_POST['update_user'])) {
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Welcome To Admin Page
-                        <small>Hi admin</small>
+                        <small>Profile</small>
                     </h1>
                     
                     <form action="" method="POST" enctype="multipart/form-data">
@@ -90,10 +88,6 @@ if (isset($_POST['update_user'])) {
                     <div class="form-group">
                         <label for="post_content">Email</label>
                         <input id="post_content" class="form-control" name="email" type="email" value="<?php  echo $user_email; ?>" >
-                    </div>
-                    <div class="form-group">
-                        <label for="post_image">Password</label>
-                        <input id="post_author" type="text" class="form-control" name="password" value="<?php echo $user_password;?>">
                     </div>
                     <div class="form-group">
                         <input type="submit" class="btn btn-success" name="update_user" value="Update User">

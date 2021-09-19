@@ -1,3 +1,8 @@
+<?php
+$user_role = $_SESSION['user_role'];
+
+?>
+
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -7,15 +12,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.php">Admin</a>
+        <a class="navbar-brand" href="index.php"><?php echo $user_role;  ?></a>
     </div>
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
-        <li >
-          <a href="../index.php" >Blog Site</a>
+        <li>
+            <a href="../index.php">Blog Site</a>
         </li>
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_SESSION['firstname'].' '.$_SESSION['lastname'];      ?> <b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_SESSION['firstname'] . ' ' . $_SESSION['lastname'];      ?> <b class="caret"></b></a>
             <ul class="dropdown-menu">
                 <li>
                     <a href="./profile.php"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -36,7 +41,7 @@
 
 
 
-    <div class="collapse navbar-collapse navbar-ex1-collapse" >
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav" style="height: 150%">
             <li>
                 <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
@@ -52,25 +57,38 @@
                     </li>
                 </ul>
             </li>
-            <li>
-                <a href="categories.php"><i class="fa fa-fw fa-wrench"></i> Categories</a>
-            </li>
-            <li>
-                <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
-                <ul id="demo" class="collapse">
-                    <li>
-                        <a href="users.php">View All User</a>
-                    </li>
-                    <li>
-                        <a href="users.php?source=add_user">Add User</a>
-                    </li>
-                </ul>
-            </li>
+            <?php
+            if ($user_role === "Admin") {
 
-            <li class="active">
-                <a href="comment.php"><i class="fa fa-fw fa-file"></i> Comments</a>
-            </li>
+            ?>
+                <li>
+                    <a href="categories.php"><i class="fa fa-fw fa-wrench"></i> Categories</a>
+                </li>
+
+                <li>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
+                    <ul id="demo" class="collapse">
+                        <li>
+                            <a href="users.php">View All User</a>
+                        </li>
+                        <li>
+                            <a href="users.php?source=add_user">Add User</a>
+                        </li>
+                    </ul>
+                </li>
+            <?php } ?>
+
+            <?php
+            if ($user_role === "Bloger") {
+
+            ?>
+
+                <li class="active">
+                    <a href="comment.php"><i class="fa fa-fw fa-file"></i> Comments</a>
+                </li>
+            <?php } ?>
             <li>
+
                 <a href="./profile.php"><i class="fa fa-fw fa-dashboard"></i> Profile</a>
             </li>
         </ul>

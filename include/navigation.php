@@ -12,30 +12,46 @@
             <a class="navbar-brand" href="./index.php">Mon Blog</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
+
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
             <ul class="nav navbar-nav">
-
-                <?php
-
-                $query = 'SELECT * FROM categories';
-                $select_all_categores_query = mysqli_query($connect,$query);
-                while ($row = mysqli_fetch_assoc($select_all_categores_query))
-                {
-                    $cat_title =$row['cat_title'];
-                    echo "<li><a href='#'>{$cat_title}</a></li>";
-                }
-
-                ?>
-
-                <li>
-                    <a href="./admin/index.php">Admin</a>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <?php
+                        $query = 'SELECT * FROM categories';
+                        $select_all_categores_query = mysqli_query($connect, $query);
+                        while ($row = mysqli_fetch_assoc($select_all_categores_query)) {
+                            $cat_title = $row['cat_title'];
+                            echo "<li><a href='#'>{$cat_title}</a></li>";
+                        } ?>
+                    </ul>
                 </li>
+
+                <?php session_start();
+                if (isset($_SESSION['user_name'])) {
+                ?>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User Panel <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="./admin/index.php">Control Panel</a>
+                            </li>
+                            <li>
+                                <a href="./include/logout.php">Log out</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                <?php } ?>
                 <li>
                     <a href="#">Services</a>
                 </li>
                 <li>
                     <a href="#">Contact</a>
                 </li>
+
             </ul>
         </div>
         <!-- /.navbar-collapse -->

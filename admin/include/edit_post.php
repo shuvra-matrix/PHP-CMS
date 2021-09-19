@@ -1,9 +1,11 @@
 <?php
+    $auth_id = $_SESSION['user_id'];
     if(isset($_GET['source'])) {
         if (isset($_GET['post_id']))
         {
+           
             $id = $_GET['post_id'];
-            $query = "SELECT * FROM posts WHERE post_id = '$id'";
+            $query = "SELECT * FROM posts WHERE post_id = '$id' AND post_author_id = '$auth_id' ";
             $select_all_from_query = mysqli_query($connect, $query);
             $row = mysqli_fetch_assoc($select_all_from_query);
             $post_id = $row['post_id'];
@@ -46,7 +48,7 @@
         $query .= "post_image='$post_image', ";
         $query .= "post_status='$post_status', ";
         $query .= "post_tags='$post_tag' ";
-        $query .= "WHERE post_id='$post_id' ";
+        $query .= "WHERE post_id='$post_id' AND post_author_id = '$auth_id'";
         $result = mysqli_query($connect,$query);
         chcek_result($result);
     }

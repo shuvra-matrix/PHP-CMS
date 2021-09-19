@@ -1,4 +1,13 @@
-<?php include "include/header.php"; ?>
+<?php include "include/header.php";
+include "../include/session.php";
+
+$role = $_SESSION['user_role'];
+if($role != "Bloger")
+{
+    header("Location:../index.php");
+}
+
+?>
 
 
     <div id="wrapper">
@@ -22,8 +31,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Welcome To Admin Page
-                        <small>Hi admin</small>
+                        <small>Comment Section</small>
                     </h1>
                     <?php
                     if(isset($_GET['source']))

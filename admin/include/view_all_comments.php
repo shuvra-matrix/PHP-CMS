@@ -19,7 +19,8 @@
         </thead>
         <tbody>
         <?php
-        $query = 'SELECT * FROM comments';
+        $auth_id = $_SESSION['user_id'];
+        $query = "SELECT * FROM comments INNER JOIN posts ON comments.comment_post_id = posts.post_id WHERE posts.post_author_id = '$auth_id'";
         $select_all_from_query = mysqli_query($connect,$query);
         while ($row = mysqli_fetch_assoc($select_all_from_query)){
             $comment_id = $row['comment_id'];

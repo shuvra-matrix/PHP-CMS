@@ -1,4 +1,6 @@
-<?php include "include/header.php"; ?>
+<?php include "include/header.php";
+include "../include/session.php";
+include "../include/admin_session.php"; ?>
 
 
 <div id="wrapper">
@@ -22,8 +24,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Welcome To Admin Page
-                        <small>Hi admin</small>
+                     
+                        <small>User Section</small>
                     </h1>
                     <?php
                     if (isset($_GET['source'])) {
