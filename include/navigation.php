@@ -24,7 +24,8 @@
                         $select_all_categores_query = mysqli_query($connect, $query);
                         while ($row = mysqli_fetch_assoc($select_all_categores_query)) {
                             $cat_title = $row['cat_title'];
-                            echo "<li><a href='#'>{$cat_title}</a></li>";
+                            $cat_id = $row['cat_id'];
+                            echo "<li><a href='category.php?cat_id=$cat_id'>{$cat_title}</a></li>";
                         } ?>
                     </ul>
                 </li>
@@ -44,13 +45,17 @@
 
                         </ul>
                     </li>
-                <?php } ?>
+                <?php }else{ ?>
                 <li>
+                    <a href="./registration.php">Sign up</a>
+                </li>
+                <?php } ?>
+                <!-- <li>
                     <a href="#">Services</a>
                 </li>
                 <li>
                     <a href="#">Contact</a>
-                </li>
+                </li> -->
 
             </ul>
         </div>
