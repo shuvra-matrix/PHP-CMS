@@ -38,7 +38,8 @@ include "include/header.php";
                 $post_status = $row['post_status'];
                 $post_tag = $row['post_tags'];
                 $post_title = $row['post_title'];
-                $post_date = $row['post_date']
+                $post_date = $row['post_date'];
+                $post_auth = $row['post_author_id'];
             ?>
 
 
@@ -49,7 +50,7 @@ include "include/header.php";
                     <a href="post.php?post_id=<?php echo $post_id ?>"><?php echo $post_title ?></a>
                 </h2>
                 <p class="lead">
-                    by <a href="index.php"><?php echo $post_author ?></a>
+                    by <a href="./author.php?author=<?php echo $post_auth;  ?>"><?php echo $post_author ?></a>
                 </p>
                 <p><span class="glyphicon glyphicon-time"></span> <?php echo $post_date ?></p>
                 <hr>
