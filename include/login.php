@@ -1,6 +1,6 @@
 <?php  
-include "./db.php";
 session_start();
+include "./db.php";
 if(isset($_POST['login']))
 {
     $user_name = $_POST['user_name'];

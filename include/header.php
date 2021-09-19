@@ -1,4 +1,6 @@
-<?php include "include/db.php"; ?>
+<?php 
+session_start();
+include "include/db.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 

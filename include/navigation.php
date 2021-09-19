@@ -30,7 +30,7 @@
                     </ul>
                 </li>
 
-                <?php session_start();
+                <?php
                 if (isset($_SESSION['user_name'])) {
                 ?>
                     <li class="dropdown">
