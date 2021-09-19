@@ -16,7 +16,7 @@ include "include/header.php";
             if (isset($_GET['author'])) {
                 $author_id = $_GET['author'];
                 $author_id = mysqli_real_escape_string($connect, $author_id);
-                $query = "SELECT * FROM posts where post_author_id = '$author_id'";
+                $query = "SELECT * FROM posts where post_author = '$author_id'";
                 $select_all_from_query = mysqli_query($connect, $query);
                 while ($row = mysqli_fetch_assoc($select_all_from_query)) {
                     $post_id = $row['post_id'];
@@ -33,8 +33,7 @@ include "include/header.php";
 
 
                     <h1 class="page-header">
-                        Page Heading
-                        <small>Secondary Text</small>
+                        <small>Welcome To Mon Blog</small>
                     </h1>
 
                     <!-- First Blog Post -->

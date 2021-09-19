@@ -2,111 +2,103 @@
 include "include/header.php";
 ?>
 <?php include 'include/navigation.php' ?>
-    <!-- Navigation -->
+<!-- Navigation -->
 <?php
- if(isset($_GET['post_id']))
- {
-     $post_id = $_GET['post_id'];
-     $post_id = mysqli_real_escape_string($connect,$post_id);
-     $query = "SELECT * FROM posts WHERE post_id ='$post_id'";
-     $result = mysqli_query($connect,$query);
-     $row = mysqli_fetch_assoc($result);
- }
- else
- {
-     header('Location:index.php');
- }
+if (isset($_GET['post_id'])) {
+    $post_id = $_GET['post_id'];
+    $post_id = mysqli_real_escape_string($connect, $post_id);
+    $query = "SELECT * FROM posts WHERE post_id ='$post_id'";
+    $result = mysqli_query($connect, $query);
+    $row = mysqli_fetch_assoc($result);
+} else {
+    header('Location:index.php');
+}
 ?>
 
 
 
-    <!-- Page Content -->
-    <div class="container">
+<!-- Page Content -->
+<div class="container">
 
-        <div class="row">
+    <div class="row">
 
-            <!-- Blog Post Content Column -->
-            <div class="col-lg-8">
+        <!-- Blog Post Content Column -->
+        <div class="col-lg-8">
 
-                <!-- Blog Post -->
+            <!-- Blog Post -->
 
-                <!-- Title -->
-                <h1><?php echo $row['post_title'] ?></h1>
+            <!-- Title -->
+            <h1><?php echo $row['post_title'] ?></h1>
 
-                <!-- Author -->
-                <p class="lead">
-                    by <a href="#"><?php echo $row['post_author'] ?></a>
-                </p>
+            <!-- Author -->
+            <p class="lead">
+                by <a href="./author.php?author=<?php echo $row['post_author'];?>"> <?php echo $row['post_author']; ?></a>
+            </p>
 
-                <hr>
+            <hr>
 
-                <!-- Date/Time -->
-                <p><span class="glyphicon glyphicon-time"></span> <?php echo $row['post_date'] ?> at 9:00 PM</p>
+            <!-- Date/Time -->
+            <p><span class="glyphicon glyphicon-time"></span> <?php echo $row['post_date']; ?> at 9:00 PM</p>
 
-                <hr>
+            <hr>
 
-                <!-- Preview Image -->
-                <img class="img-responsive" src="images/<?php echo $row['post_image'] ?>" alt="">
+            <!-- Preview Image -->
+            <img class="img-responsive" src="images/<?php echo $row['post_image']; ?>" alt="">
 
-                <hr>
+            <hr>
 
-                <!-- Post Content -->
-                <p class="lead"><?php echo $row['post_content'] ?></p>
+            <!-- Post Content -->
+            <p class="lead"><?php echo $row['post_content']; ?></p>
 
-                <hr>
+            <hr>
 
-                <?php
-                        if (isset($_POST['comment']))
-                        {
-                                $post_id = $_POST['post_id'];
-                                $name = $_POST['name'];
-                                $email = $_POST['email'];
-                                $comment = $_POST['content'];
-                                if(!empty($name) && !empty($email) && !empty($comment))
-                                {
-                                    $comment = mysqli_real_escape_string($connect,$comment);
-                                    $query = "INSERT INTO comments (comment_post_id,comment_author,comment_email,comment_content,comment_date) ";
-                                    $query .= "VALUES ('$post_id','$name','$email','$comment',now()) ";
-                                    $result = mysqli_query($connect,$query);
-                                }
-                                else
-                                {
-                                    echo "<script> alert('Comment field can not be empty '); </script>";
-                                }
-                        }
+            <?php
+            if (isset($_POST['comment'])) {
+                $post_id = $_POST['post_id'];
+                $name = $_POST['name'];
+                $email = $_POST['email'];
+                $comment = $_POST['content'];
+                if (!empty($name) && !empty($email) && !empty($comment)) {
+                    $comment = mysqli_real_escape_string($connect, $comment);
+                    $query = "INSERT INTO comments (comment_post_id,comment_author,comment_email,comment_content,comment_date) ";
+                    $query .= "VALUES ('$post_id','$name','$email','$comment',now()) ";
+                    $result = mysqli_query($connect, $query);
+                } else {
+                    echo "<script> alert('Comment field can not be empty '); </script>";
+                }
+            }
 
-                    ?>
-                <!-- Blog Comments -->
+            ?>
+            <!-- Blog Comments -->
 
-                <!-- Comments Form -->
-                <div class="well">
-                    <h4>Leave a Comment:</h4>
-                    <form role="form" action="" method="POST">
-                        <div class="form-group">
-                            <input class="form-control"  type="text" name="name" placeholder="Your Name">
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control"  type="email" name="email" placeholder="Your Email">
-                        </div>
-                        <div class="form-group">
-                            <textarea  name="content" class="form-control" rows="3"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <input type="hidden" value="<?php echo $row['post_id'] ?>" name="post_id">
-                        </div>
-                        <button type="submit" class="btn btn-primary" name="comment">Submit</button>
-                    </form>
-                </div>
+            <!-- Comments Form -->
+            <div class="well">
+                <h4>Leave a Comment:</h4>
+                <form role="form" action="" method="POST">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="name" placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="email" name="email" placeholder="Your Email">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="content" class="form-control" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" value="<?php echo $row['post_id'] ?>" name="post_id">
+                    </div>
+                    <button type="submit" class="btn btn-primary" name="comment">Submit</button>
+                </form>
+            </div>
 
-                <hr>
-                <h5>Total Comment : <?php echo $row['post_comment_counts'] ?></h5>
-                <!-- Posted Comments -->
-                <?php
-                $query = "SELECT * FROM comments WHERE comment_status = 'approved' AND comment_post_id = '$post_id'";
-                $result = mysqli_query($connect,$query);
-                while ($rows= mysqli_fetch_assoc($result))
-                {
-                ?>
+            <hr>
+            <h5>Total Comment : <?php echo $row['post_comment_counts'] ?></h5>
+            <!-- Posted Comments -->
+            <?php
+            $query = "SELECT * FROM comments WHERE comment_status = 'approved' AND comment_post_id = '$post_id'";
+            $result = mysqli_query($connect, $query);
+            while ($rows = mysqli_fetch_assoc($result)) {
+            ?>
                 <!-- Comment -->
                 <div class="media">
                     <a class="pull-left" href="#">
@@ -119,18 +111,17 @@ include "include/header.php";
                         <?php echo  $rows['comment_content']  ?>
                     </div>
                 </div>
-                <?php  }?>
-                <!-- Comment -->
+            <?php  } ?>
+            <!-- Comment -->
 
-            </div>
-
-            <!-- Blog Sidebar Widgets Column -->
-       <?php include "include/sidebar.php" ?>
         </div>
-        <!-- /.row -->
 
-        <hr>
+        <!-- Blog Sidebar Widgets Column -->
+        <?php include "include/sidebar.php" ?>
+    </div>
+    <!-- /.row -->
 
-        <!-- Footer -->
-        <?php include "include/footer.php" ?>
+    <hr>
 
+    <!-- Footer -->
+    <?php include "include/footer.php" ?>
