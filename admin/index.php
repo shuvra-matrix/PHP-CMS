@@ -3,7 +3,6 @@ $id = $_SESSION['user_id'];
 $role = $_SESSION['user_role'];
 
 $user_query = "SELECT * FROM users WHERE user_id= '$id'";
-echo $user_query;
 $user_result = mysqli_query($connect,$user_query);
 $user_row = mysqli_fetch_assoc($user_result); 
 
