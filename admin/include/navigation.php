@@ -79,7 +79,7 @@ $user_role = $_SESSION['user_role'];
             <?php } ?>
 
             <?php
-            if ($user_role === "Bloger") {
+            if ($user_role === "Bloger" || $user_role === "Admin" ) {
 
             ?>
 

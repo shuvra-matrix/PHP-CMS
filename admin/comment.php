@@ -2,7 +2,11 @@
 include "../include/session.php";
 
 $role = $_SESSION['user_role'];
-if($role != "Bloger")
+if($role = "Bloger" || $user_role = "Admin" )
+{
+    null;
+}
+else
 {
     header("Location:../index.php");
 }

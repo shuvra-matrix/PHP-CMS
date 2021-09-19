@@ -72,7 +72,7 @@ $user_row = mysqli_fetch_assoc($user_result);
                             </a>
                         </div>
                     </div>
-                    <?php if($user_role == "Bloger"){   ?>
+                    <?php if($user_role == "Bloger" || $user_role === "Admin" ){   ?>
                     <div class="col-lg-3 col-md-6">
                         <div class="panel panel-green">
                             <div class="panel-heading">
