@@ -6,10 +6,6 @@ $db['pass']='';
 $db['database']='cms';
 
 
-
-
-
-
 foreach ($db as $key => $value){
     define(strtoupper($key),$value);
 
